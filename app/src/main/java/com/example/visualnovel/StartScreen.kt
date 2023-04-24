@@ -18,11 +18,10 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.navigation.NavController
 import androidx.navigation.NavHostController
 
 @Composable
-fun FirstScreen(navController: NavHostController) {
+fun StartScreen(navController: NavHostController) {
     Image(
         painter = painterResource(id = R.drawable.background),
         contentDescription = "background",
@@ -57,7 +56,7 @@ fun FirstScreen(navController: NavHostController) {
         ) {
             Button(
                 onClick = {
-                    navController.navigate(Destination.second.route)
+                    navController.navigate(Destination.enterName.route)
                 },
                 colors = ButtonDefaults.buttonColors(backgroundColor = colorResource(id = R.color.darkBlue)),
                 modifier = Modifier.fillMaxWidth()

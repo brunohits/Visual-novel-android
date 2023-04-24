@@ -18,11 +18,9 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
@@ -30,7 +28,7 @@ import com.example.visualnovel.datastore.StoreUserNickname
 import kotlinx.coroutines.launch
 
 @Composable
-fun SecondScreen(navController: NavHostController) {
+fun EnterNameScreen(navController: NavHostController) {
     val ctx = LocalContext.current
     val nickname = remember { mutableStateOf("") }
     val scope = rememberCoroutineScope()
@@ -85,7 +83,7 @@ fun SecondScreen(navController: NavHostController) {
                 .padding(bottom = 50.dp)
         ) {
             Button(
-                onClick = { navController.navigate(Destination.someScreen.createRoute(3));
+                onClick = { navController.navigate(Destination.someScreen.createRoute(3))
                           scope.launch { dataStore.saveNickname(nickname.value) }},
                 colors = ButtonDefaults.buttonColors(backgroundColor = colorResource(id = R.color.darkBlue)),
                 modifier = Modifier.fillMaxWidth()

@@ -11,14 +11,6 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 
-sealed class Destination(val route: String) {
-    object first : Destination("first_screen")
-    object second : Destination("second_screen")
-    object someScreen : Destination("some_screen/{elemId}") {
-        fun createRoute(elemId: Int) = "some_screen/$elemId"
-    }
-}
-
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,17 +22,16 @@ class MainActivity : ComponentActivity() {
 
 }
 
-
 @Composable
 fun NavigationAppHost(navController: NavHostController) {
-    val ctx = LocalContext.current
-    NavHost(navController = navController, startDestination = "first_screen") {
-        composable(Destination.first.route) { FirstScreen(navController) }
-        composable(Destination.second.route) { SecondScreen(navController) }
+    NavHost(navController = navController, startDestination = "start_screen") {
+        composable(Destination.start.route) { StartScreen(navController) }
+        composable(Destination.enterName.route) { EnterNameScreen(navController) }
         composable(Destination.someScreen.route) { navBackStackEntry ->
             val elemId = navBackStackEntry.arguments?.getString("elemId")
             if (elemId == null) {
-                Toast.makeText(ctx, "elemId is required", Toast.LENGTH_SHORT).show()
+                Toast.makeText(LocalContext.current, "elemId is required", Toast.LENGTH_SHORT)
+                    .show()
             } else {
                 SomeScreen(navController, elemId.toInt())
             }
