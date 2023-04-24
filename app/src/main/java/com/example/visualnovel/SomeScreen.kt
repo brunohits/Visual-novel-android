@@ -81,8 +81,6 @@ fun SomeScreen(navController: NavController, elemId: Int) {
         if (elemId == 3) ThreeVariantsScreen(screen!!, navController)
         if (elemId in listOf(4, 5, 6, 7, 8, 11)) TwoVariantsScreen(screen!!, navController)
         if (elemId in listOf(9, 10, 12, 13, 14)) OneVariantScreen(screen!!, navController)
-        if (elemId == 1) navController.navigate(Destination.start.route)
-
     }
 
 }
