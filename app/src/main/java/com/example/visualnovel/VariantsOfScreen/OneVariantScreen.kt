@@ -28,7 +28,8 @@ fun OneVariantScreen(screen: Screen, navController: NavController) {
             .padding(top = 50.dp, bottom = 100.dp)
     ) {
         Button(
-            onClick = { navController.navigate(Destination.someScreen.createRoute(screen.arrayOfVariants[0].nextId)) },
+            onClick = { if (screen.arrayOfVariants[0].nextId == 1) navController.navigate(Destination.start.route)
+                else navController.navigate(Destination.someScreen.createRoute(screen.arrayOfVariants[0].nextId))},
             colors = ButtonDefaults.buttonColors(backgroundColor = colorResource(id = R.color.lightBlue)),
             modifier = Modifier.fillMaxWidth()
         ) {
